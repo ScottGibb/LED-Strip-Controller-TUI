@@ -1,5 +1,7 @@
 # Python Command Line Interface
 
+[![MegaLinter](https://github.com/ScottGibb/LED-Strip-Controller-TUI/actions/workflows/Mega%20Linter.yaml/badge.svg)](https://github.com/ScottGibb/LED-Strip-Controller-TUI/actions/workflows/Mega%20Linter.yaml)
+
 <center>
   <img src ="docs/Languages_And_Tools.png">
 </center>
@@ -12,11 +14,13 @@ The Python command Line interface is a very simple python interface which allows
 </center>
 
 ## Docker
+
 As for Docker, the Dockerfile is held in this repository and can be created using the bash script run.sh. This does all the building of the image and the running of the container. At the moment the system runs in privileged mode which is not-ideal, however for the purpose of this software which is for debugging the hardware and ensuring that its running correctly, this should not matter much.
 
  There is also a docker-compose file attached to this repository. This can be used as a snippet for bigger applications which require multiple containers to be run.
 
 ## Installation Instructions
+
 As for the installation of this program, the steps are listed below:
 
 - Download Repository
