@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  cmd_line_app:
+    build: .
+    image: cmdline-controller:v1
+    container_name: cmdline-controller
+    privileged: true
+    restart: always
