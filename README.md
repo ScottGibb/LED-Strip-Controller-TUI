@@ -2,16 +2,13 @@
 
 [![MegaLinter](https://github.com/ScottGibb/LED-Strip-Controller-TUI/actions/workflows/Mega%20Linter.yaml/badge.svg)](https://github.com/ScottGibb/LED-Strip-Controller-TUI/actions/workflows/Mega%20Linter.yaml)
 
-<center>
-  <img src ="docs/Languages_And_Tools.png">
-</center>
+![Languages and Tools](docs/Languages_And_Tools.png)
 
 ## Summary
 
 The Python command Line interface is a very simple python interface which allows the user to talk to the hardware. This can be done using any of the hardware communication methods. Provided the hardware is configured as such. The interface is very simple and allows the user to control the hardware through a series of questions. The architecture of this system is shown below:
-<center>
-<img src = docs/System-Diagram.png>
-</center>
+
+![System Diagram](docs/System-Diagram.png)
 
 ## Docker
 
@@ -29,7 +26,7 @@ As for the installation of this program, the steps are listed below:
 - Attach to the running container
 - Follow the command interface Instructions
 
-# Useful Links
+## Useful Links
 
 - [Docker](https://docs.docker.com/)
 - [Portainer](https://www.portainer.io/)
