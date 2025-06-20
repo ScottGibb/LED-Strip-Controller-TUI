@@ -28,6 +28,7 @@ ENABLE_LINTERS:
   - PYTHON_RUFF_FORMAT
   - PHTHON_FLAKE8
   - DOCKERFILE_HADOLINT
+  - DOCKERFILE_DCLINT
 
 SHOW_ELAPSED_TIME: true
 FILEIO_REPORTER: false
@@ -41,3 +42,6 @@ OUTPUT_DETAIL: detailed
 
 #  Linter Configuration
 MARKDOWN_MARKDOWNLINT_ARGUMENTS: --disable MD013 MD033
+
+PLUGINS:
+  - "https://raw.githubusercontent.com/wesley-dean/mega-linter-plugin-dclint/refs/heads/main/mega-linter-plugin-dclint/dclint.megalinter-descriptor.yml"
