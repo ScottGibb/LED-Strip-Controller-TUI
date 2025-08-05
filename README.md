@@ -1,6 +1,6 @@
 # Python Command Line Interface
 
-[![MegaLinter](https://github.com/ScottGibb/LED-Strip-Controller-TUI/actions/workflows/Mega%20Linter.yaml/badge.svg)](https://github.com/ScottGibb/LED-Strip-Controller-TUI/actions/workflows/Mega%20Linter.yaml)
+[![MegaLinter](https://github.com/ScottGibb/LED-Strip-Controller-TUI/actions/workflows/mega-linter.yaml/badge.svg)](https://github.com/ScottGibb/LED-Strip-Controller-TUI/actions/workflows/mega-linter.yaml)
 
 ![Languages and Tools](docs/Languages_And_Tools.png)
 
