@@ -1,16 +1,31 @@
-FROM python:3.11-slim-buster
-
+# Use a recent slim Python image
+FROM python:3.12-slim
 LABEL maintainer="Scott Gibb"
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends build-essential=12.9 python3-pip=20.3.4-4+deb11u1 && \
-    rm -rf /var/lib/apt/lists/*
+# The installer requires curl (and certificates) to download the release archive
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
 
+# Download the latest installer
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+
+# Run the installer then remove it
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+
+# Ensure the installed binary is on the `PATH`
+ENV PATH="/root/.local/bin/:$PATH"
+
+# Add uv to PATH
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# Set the working directory
 WORKDIR /app
 
-COPY . . 
-COPY python-requirements.txt ./python-requirements.txt
-RUN pip3 install --no-cache-dir -r python-requirements.txt
+# Copy project files
+COPY . .
 
+# Install dependencies using uv
+RUN uv pip install --system --no-cache .
+
+# Default command
 ENTRYPOINT ["python3"]
-CMD ["-u","src/Main.py"]
+CMD ["-u", "src/Main.py"]

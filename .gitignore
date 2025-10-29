@@ -160,3 +160,5 @@ cython_debug/
 *.dtmp
 
 megalinter-reports/
+
+.ruff_cache
