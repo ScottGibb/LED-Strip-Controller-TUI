@@ -4,19 +4,18 @@ services:
     container_name: cmdline-controller
     restart: always
     privileged: true
-    stdin_open: true   # Keep stdin open
-    tty: true          # Allocate a pseudo-TTY
+    stdin_open: true # Keep stdin open
+    tty: true # Allocate a pseudo-TTY
 
   portainer:
-    image: portainer/portainer-ce
+    image: portainer/portainer-ce:latest
     container_name: portainer
-    restart: always
-    ports:
-      - "9000:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
+    ports:
+      - "9000:9000"
+    restart: always
 
 volumes:
   portainer_data:
-  
