@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.1.0...v0.2.0) (2025-12-01)
+
+
+### Features
+
+* Add lock file ([8c56346](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/8c5634641b5bb9f055216c8c6b0ce66e139854b4))
+
 ## 0.1.0 (2025-10-29)
 
 
