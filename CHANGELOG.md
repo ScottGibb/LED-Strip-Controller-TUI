@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.2.0...v0.2.1) (2025-12-02)
+
+
+### Bug Fixes
+
+* **ci:** Dependabot ([1524e6c](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/1524e6c6edf3b90094f76489e134aa3e9953c003))
+* **ci:** Fix Dependabot github actions path ([63b97a8](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/63b97a852b586427228855e2fa8a173175a9e946))
+
 ## [0.2.0](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.1.0...v0.2.0) (2025-12-01)
 
 
