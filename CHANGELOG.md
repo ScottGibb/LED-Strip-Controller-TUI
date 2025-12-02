@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.2.1...v0.3.0) (2025-12-02)
+
+
+### Features
+
+* **deps:** Using more than dep for pyserial dependency ([6062aab](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/6062aab42fc35516b5d554eaf81d7836141c9ab5))
+
 ## [0.2.1](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.2.0...v0.2.1) (2025-12-02)
 
 
