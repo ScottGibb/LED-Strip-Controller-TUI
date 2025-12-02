@@ -5,7 +5,7 @@ description = "TUI for LED strip controller"
 authors = [ { name = "Scott Gibb" } ]
 requires-python = ">=3.10"
 dependencies = [
-  "pyserial==3.5",
+  "pyserial>=3.5",
 ]
 
 # UV will use this file to determine project dependencies. Run `uv lock` to
