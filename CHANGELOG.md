@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.3.0...v0.4.0) (2025-12-15)
+
+
+### Features
+
+* **ci:** Update Dependabot workflow for auto-merging ([eec6c4c](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/eec6c4c6fd196f73922c2d5a176bd1389c8e981f))
+
 ## [0.3.0](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.2.1...v0.3.0) (2025-12-02)
 
 
