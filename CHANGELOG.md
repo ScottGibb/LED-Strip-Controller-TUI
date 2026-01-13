@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.4.1](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.4.0...v0.4.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* **docs:** revert brightness range documentation back to 0-100 ([2787a58](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/2787a585e889f75815430293229fac895a44e07b))
+* **types:** correct colour parameter type from COLOUR enum to int ([dc85850](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/dc8585044f67aa72caf07740d61f683e8b93d971))
+* **types:** revert colour parameter to COLOUR type and update brightness range to 0-255 ([8a272ec](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/8a272ec8f276019f1c02616af0c08372c69e3b52))
+
+
+### Documentation
+
+* **types:** improve type hints and docstrings for all Python modules ([7b504c1](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/7b504c1c27043144ac5eefd795d8074ccbac3172))
+
 ## [0.4.0](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.3.0...v0.4.0) (2025-12-15)
 
 
