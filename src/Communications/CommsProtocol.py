@@ -11,7 +11,7 @@ def create_constant_colour_message(channel: CHANNEL, colour: COLOUR, brightness:
     Args:
         channel: The channel to change.
         colour: The colour to set.
-        brightness: The brightness level (0-255).
+        brightness: The brightness level (0-100).
 
     Returns:
         The formatted message as a bytearray to send to the hardware.
@@ -28,7 +28,7 @@ def create_fade_message(channel: CHANNEL, fade_type: FADE_TYPE, colour: COLOUR, 
         channel: The channel to change.
         fade_type: The type of fade effect to use.
         colour: The colour to set.
-        brightness: The brightness level (0-255).
+        brightness: The brightness level (0-100).
         period: The period of the fade effect in milliseconds.
 
     Returns:
@@ -63,7 +63,7 @@ def create_hsb_message(channel: CHANNEL, hue: int, saturation: int, brightness: 
         channel: The channel to change.
         hue: The hue value (0-360 degrees).
         saturation: The saturation level (0-100).
-        brightness: The brightness level (0-255).
+        brightness: The brightness level (0-100).
 
     Returns:
         The formatted message as a bytearray to send to the hardware.
