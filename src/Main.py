@@ -14,13 +14,15 @@ from Communications.Types import CHANNEL, FADE_TYPE
 from UserInput import ask_user_numeric, ask_user_word
 
 
-def ask_user_for_hue(channel, mode):
-    """_summary_: Gets the message to send to the hardware to change the hue mode
+def ask_user_for_hue(channel: CHANNEL, mode: FADE_TYPE) -> bytearray:
+    """Get user input for HSB (Hue, Saturation, Brightness) values and create a message.
+
     Args:
-        channel (_type_): _description_ The channel to change
-        mode (_type_): _description_ The mode to change to
+        channel: The channel to change.
+        mode: The fade type mode (not used in this function but kept for consistency).
+
     Returns:
-        _type_: _description_ The message to send to the hardware
+        The formatted HSB message as a bytearray to send to the hardware.
     """
     user_bounds = {"START": 0, "END": 360}
     user_message = (
@@ -53,13 +55,15 @@ def ask_user_for_hue(channel, mode):
     return create_hsb_message(channel, hue, saturation, brightness)
 
 
-def ask_user_for_rgb(channel, mode):
-    """_summary_: Gets the message to send to the hardware to change the rgb mode
+def ask_user_for_rgb(channel: CHANNEL, mode: FADE_TYPE) -> bytearray:
+    """Get user input for RGB (Red, Green, Blue) values and create a message.
+
     Args:
-        channel (_type_): _description_ The channel to change
-        mode (_type_): _description_ The mode to change to
+        channel: The channel to change.
+        mode: The fade type mode (not used in this function but kept for consistency).
+
     Returns:
-        _type_: _description_ The message to send to the hardware
+        The formatted RGB message as a bytearray to send to the hardware.
     """
     user_bounds = {"START": 0, "END": 255}
     user_message = (
@@ -91,15 +95,17 @@ def ask_user_for_rgb(channel, mode):
     return create_rgb_message(channel, red, green, blue)
 
 
-def ask_user_for_colour(channel, mode):
-    """_summary_: Gets the message to send to the hardware to change the colour mode
+def ask_user_for_colour(channel: CHANNEL, mode: FADE_TYPE) -> bytearray:
+    """Get user input for colour and brightness values and create a message.
+
+    Depending on the mode, creates either a constant colour message or a fade message.
+
     Args:
-        channel (_type_): _description_ The channel to change
-        mode (_type_): _description_ The mode to change to
-        colour (_type_): _description_ The colour to change to
-        brightness (_type_): _description_ The brightness to change to
+        channel: The channel to change.
+        mode: The fade type mode to use.
+
     Returns:
-        _type_: _description_ The message to send to the hardware
+        The formatted message as a bytearray to send to the hardware.
     """
 
     # Ask the user for the colour and brightness
@@ -143,11 +149,11 @@ def ask_user_for_colour(channel, mode):
     return message
 
 
-def user_loop(communicator):
-    """_summary_: The main loop of the program
+def user_loop(communicator: socket.socket | serial.Serial) -> None:
+    """Main loop that continuously prompts the user for input and sends messages to hardware.
 
     Args:
-        communicator (_type_): _description_ The communicator to use to send messages
+        communicator: The communication interface (socket or serial port) to send messages.
     """
     while True:
         tx_msg = None
@@ -189,9 +195,9 @@ def user_loop(communicator):
         print(binascii.hexlify(tx_msg))
 
 
-def main():
-    """_summary_: The main function of the program"""
-    communicator = None
+def main() -> None:
+    """Main function that sets up communication and starts the user interaction loop."""
+    communicator: socket.socket | serial.Serial | None = None
     communicator_options = {"TCP-IP", "Serial"}
     user_message = (
         "Please select the communication method you would like to use: ("
@@ -220,17 +226,19 @@ def main():
         while connected is False:
             port = input("What port is the hardware connected on?")
             try:
-                communicator = serial.Serial(port)
-                communicator.parity = serial.PARITY_EVEN
-                communicator.timeout = 1
-                communicator.stopbits = serial.STOPBITS_ONE
-                communicator.bytesize = serial.EIGHTBITS
-                communicator.baudrate = 115200
+                serial_comm = serial.Serial(port)
+                serial_comm.parity = serial.PARITY_EVEN
+                serial_comm.timeout = 1
+                serial_comm.stopbits = serial.STOPBITS_ONE
+                serial_comm.bytesize = serial.EIGHTBITS
+                serial_comm.baudrate = 115200
+                communicator = serial_comm
                 connected = True
             except serial.SerialException:
                 print("Could not connect to the hardware on port: " + port)
 
-    user_loop(communicator)
+    if communicator is not None:
+        user_loop(communicator)
 
 
 if __name__ == "__main__":

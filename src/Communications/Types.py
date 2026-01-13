@@ -6,11 +6,7 @@ TX_MSG_SIZE = 10
 
 
 class COLOUR(Enum):
-    """_summary_
-    Colour Enum specifying each colour the system can do
-    Args:
-        Enum (_type_): _description_
-    """
+    """Colour enumeration specifying each colour the system can display."""
     RED = 0
     GREEN = 1
     BLUE = 2
@@ -28,11 +24,7 @@ class COLOUR(Enum):
 
 
 class FADE_TYPE(Enum):
-    """_summary_
-    Fade Type enum representing each of the modes the system can do
-    Args:
-        Enum (_type_): _description_
-    """
+    """Fade type enumeration representing each of the modes the system can perform."""
     NONE = 0
     SINE = 1
     SQUARE = 2
@@ -45,11 +37,7 @@ class FADE_TYPE(Enum):
 
 
 class CHANNEL(Enum):
-    """_summary_
-    Channel Enum representing each of the channels and there subsequent IDs
-    Args:
-        Enum (_type_): _description_
-    """
+    """Channel enumeration representing each of the channels and their IDs."""
     CHANNEL_NS = 0
     CHANNEL_1 = 1
     CHANNEL_2 = 2
@@ -58,15 +46,11 @@ class CHANNEL(Enum):
 
 
 class TX_MSG_ID(Enum):
-    """
-    TX_MSG_ID defines the different tx messages the hardware can send
-    """
+    """TX message ID enumeration defining different messages the hardware can send."""
     LED_UPDATE = 0
     PWR_UPDATE = 1
 
 
 class CTRL_CMD_ID(Enum):
-    """
-    CTRL_CMD_ID defines the different messages that can be sent to the hardware
-    """
+    """Control command ID enumeration defining messages that can be sent to the hardware."""
     LED_CHANGE = 0

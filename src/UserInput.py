@@ -1,8 +1,12 @@
-def ask_user_word(message, validInputs):
-    """_summary_: Checks if a word is within the bounds of a list of valid inputs
-    _params_: input: The word to check
-              validInputs: The list of valid inputs
-    _return_: True if the word is within the bounds, False otherwise
+def ask_user_word(message: str, validInputs: set[str]) -> str:
+    """Ask the user for a word input and validate it against a set of valid options.
+
+    Args:
+        message: The message to display to the user prompting for input.
+        validInputs: A set of valid input options to check against.
+
+    Returns:
+        The validated user input string.
     """
     usr_input = input(message)
     while (usr_input not in validInputs):
@@ -12,14 +16,18 @@ def ask_user_word(message, validInputs):
     return usr_input
 
 
-def ask_user_numeric(message, bounds):
-    """_summary_: Asks the user for input and checks if the input is within the bounds, blocks until the user enters a valid input
+def ask_user_numeric(message: str, bounds: dict[str, int]) -> str:
+    """Ask the user for numeric input and validate it against specified bounds.
+
+    Continuously prompts the user until valid input is provided within the
+    specified START and END bounds.
 
     Args:
-        message (_type_): _description_ The message to display to the user
-        bounds (_type_): _description_ The bounds to check the input against
+        message: The message to display to the user prompting for input.
+        bounds: A dictionary with 'START' and 'END' keys specifying the valid range.
+
     Returns:
-        _type_: _description_ The user input if it is within the bounds otherwise it will ask the user again
+        The validated user input as a string.
     """
     while (True):
         user_input = input(message)
@@ -29,21 +37,29 @@ def ask_user_numeric(message, bounds):
             print("Invalid: Please try again")
 
 
-def __check_numeric_bounds(val, min_val, max_val):
-    """_summary_: Checks if a value is within the bounds of a min and max value
-    _params_: val: The value to check
-              min_val: The minimum value
-              max_val: The maximum value
-    _return_: True if the value is within the bounds, False otherwise
+def __check_numeric_bounds(val: str, min_val: int | None, max_val: int | None) -> bool:
+    """Check if a string value can be converted to an integer within specified bounds.
+
+    Args:
+        val: The string value to check and convert.
+        min_val: The minimum allowed value (inclusive).
+        max_val: The maximum allowed value (inclusive).
+
+    Returns:
+        True if the value is valid and within bounds, False otherwise.
     """
+    if min_val is None or max_val is None:
+        print("Invalid bounds configuration")
+        return False
+
     try:
-        val = int(val)
+        int_val = int(val)
 
     except ValueError:
         print("Invalid Value for value, please try again")
         return False
 
-    if val < min_val or val > max_val:
+    if int_val < min_val or int_val > max_val:
         print("Value out of bounds, please try again inside the bounds of " +
               str(min_val) + " and " + str(max_val))
         return False
