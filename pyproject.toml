@@ -1,6 +1,6 @@
 [project]
 name = "led-strip-controller-tui"
-version = "0.4.0"
+version = "0.4.1"
 description = "TUI for LED strip controller"
 authors = [ { name = "Scott Gibb" } ]
 requires-python = ">=3.10"
