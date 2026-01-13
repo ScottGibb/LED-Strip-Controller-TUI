@@ -1,16 +1,16 @@
 # Local Imports
-from Communications.Types import COLOUR, CTRL_CMD_ID
+from Communications.Types import CTRL_CMD_ID
 from Communications.Types import CHANNEL
 from Communications.Types import FADE_TYPE
 from Communications.Types import TX_MSG_SIZE
 
 
-def create_constant_colour_message(channel: CHANNEL, colour: COLOUR, brightness: int) -> bytearray:
+def create_constant_colour_message(channel: CHANNEL, colour: int, brightness: int) -> bytearray:
     """Create a message to send to the hardware to set a constant colour on a channel.
 
     Args:
         channel: The channel to change.
-        colour: The colour to set.
+        colour: The colour value (0-12, corresponding to COLOUR enum values).
         brightness: The brightness level (0-100).
 
     Returns:
@@ -21,13 +21,13 @@ def create_constant_colour_message(channel: CHANNEL, colour: COLOUR, brightness:
     return _add_padding(bytes)
 
 
-def create_fade_message(channel: CHANNEL, fade_type: FADE_TYPE, colour: COLOUR, brightness: int, period: int) -> bytearray:
+def create_fade_message(channel: CHANNEL, fade_type: FADE_TYPE, colour: int, brightness: int, period: int) -> bytearray:
     """Create a message to send to the hardware to set a fading colour effect on a channel.
 
     Args:
         channel: The channel to change.
         fade_type: The type of fade effect to use.
-        colour: The colour to set.
+        colour: The colour value (0-12, corresponding to COLOUR enum values).
         brightness: The brightness level (0-100).
         period: The period of the fade effect in milliseconds.
 
