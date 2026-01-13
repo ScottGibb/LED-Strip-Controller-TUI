@@ -5,68 +5,68 @@ from Communications.Types import FADE_TYPE
 from Communications.Types import TX_MSG_SIZE
 
 
-def create_constant_colour_message(channel: CHANNEL, colour: COLOUR, brightness):
-    """_summary_: Creates a message to send to the hardware to change the colour of a channel
+def create_constant_colour_message(channel: CHANNEL, colour: COLOUR, brightness: int) -> bytearray:
+    """Create a message to send to the hardware to set a constant colour on a channel.
 
     Args:
-        channel (CHANNEL): _description_ The channel to change
-        colour (COLOUR): _description_ The colour to change to
-        brightness (_type_): _description_ The brightness to change to
+        channel: The channel to change.
+        colour: The colour to set.
+        brightness: The brightness level (0-100).
 
     Returns:
-        _type_: _description_ The message to send to the hardware
+        The formatted message as a bytearray to send to the hardware.
     """
     bytes = bytearray([CTRL_CMD_ID.LED_CHANGE.value, channel.value,
                        FADE_TYPE.NONE.value, colour, brightness]+ [0] * 4)
     return _add_padding(bytes)
 
 
-def create_fade_message(channel: CHANNEL, fade_type: FADE_TYPE, colour: COLOUR, brightness, period):
-    """_summary_: Creates a message to send to the hardware to change the colour of a channel
+def create_fade_message(channel: CHANNEL, fade_type: FADE_TYPE, colour: COLOUR, brightness: int, period: int) -> bytearray:
+    """Create a message to send to the hardware to set a fading colour effect on a channel.
 
     Args:
-        channel (CHANNEL): _description_ The channel to change
-        fade_type (FADE_TYPE): _description_ The fade type to use
-        colour (COLOUR): _description_ The colour to change to
-        brightness (_type_): _description_ The brightness to change to 
-        period (_type_): _description_ The period of the fade
+        channel: The channel to change.
+        fade_type: The type of fade effect to use.
+        colour: The colour to set.
+        brightness: The brightness level (0-100).
+        period: The period of the fade effect in milliseconds.
 
     Returns:
-        _type_: _description_ The message to send to the hardware
+        The formatted message as a bytearray to send to the hardware.
     """
     bytes = bytearray([CTRL_CMD_ID.LED_CHANGE.value, channel.value,
                        fade_type.value, colour, brightness]) + period.to_bytes(4, "big")
     return _add_padding(bytes)
 
 
-def create_rgb_message(channel: CHANNEL, red, green, blue):
-    """_summary_: Creates a message to send to the hardware to change the colour of a channel
+def create_rgb_message(channel: CHANNEL, red: int, green: int, blue: int) -> bytearray:
+    """Create a message to send to the hardware to set RGB colour values on a channel.
 
     Args:
-        channel (CHANNEL): _description_ The channel to change
-        red (_type_): _description_ the amount of red to use
-        green (_type_): _description_ the amount of green to use
-        blue (_type_): _description_  the amount of blue to use
+        channel: The channel to change.
+        red: The red component value (0-255).
+        green: The green component value (0-255).
+        blue: The blue component value (0-255).
 
     Returns:
-        _type_: _description_ The message to send to the hardware
+        The formatted message as a bytearray to send to the hardware.
     """
     bytes = bytearray([CTRL_CMD_ID.LED_CHANGE.value,
                        channel.value, FADE_TYPE.RGB_CTRL.value, red, green, blue])
     return _add_padding(bytes)
 
 
-def create_hsb_message(channel: CHANNEL, hue, saturation, brightness):
-    """_summary_: Creates a message to send to the hardware to change the colour of a channel
+def create_hsb_message(channel: CHANNEL, hue: int, saturation: int, brightness: int) -> bytearray:
+    """Create a message to send to the hardware to set HSB colour values on a channel.
 
     Args:
-        channel (CHANNEL): _description_ The channel to change
-        hue (_type_): _description_ the hue to use
-        saturation (_type_): _description_ the saturation to use
-        brightness (_type_): _description_ the brightness to use
+        channel: The channel to change.
+        hue: The hue value (0-360 degrees).
+        saturation: The saturation level (0-100).
+        brightness: The brightness level (0-100).
 
     Returns:
-        _type_: _description_ The message to send to the hardware
+        The formatted message as a bytearray to send to the hardware.
     """
     hue_bytes = hue.to_bytes(2, "big")
     bytes = bytearray([CTRL_CMD_ID.LED_CHANGE.value, channel.value, FADE_TYPE.HUE_CTRL.value]) + \
@@ -74,8 +74,14 @@ def create_hsb_message(channel: CHANNEL, hue, saturation, brightness):
     return _add_padding(bytes)
 
 
-def _add_padding(bytes):
-    """_summary_: Adds padding to the message to ensure that the message is the correct size
+def _add_padding(bytes: bytearray) -> bytearray:
+    """Add padding to the message to ensure it matches the required transmission size.
+
+    Args:
+        bytes: The message bytearray to pad.
+
+    Returns:
+        The padded message as a bytearray.
     """
     padding_len = TX_MSG_SIZE - len(bytes)
     if padding_len > 0:
