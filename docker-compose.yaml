@@ -1,5 +1,4 @@
 ---
-
 name: LED Strip Controller TUI Example
 
 services:
@@ -18,7 +17,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     ports:
-      - '0.0.0.0:9000:9000'
+      - "0.0.0.0:9000:9000"
     restart: always
 
 volumes:
