@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.4.1...v0.5.0) (2026-03-08)
+
+
+### Features
+
+* add docker compose linter ([763f2cb](https://github.com/ScottGibb/LED-Strip-Controller-TUI/commit/763f2cb10f0efd765c79fc76d5385f7a113bb723))
+
 ## [0.4.1](https://github.com/ScottGibb/LED-Strip-Controller-TUI/compare/v0.4.0...v0.4.1) (2026-01-13)
 
 
